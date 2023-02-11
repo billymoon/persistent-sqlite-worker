@@ -1,9 +1,13 @@
 {
   "name": "persistent-sqlite-worker",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "main": "src/persistent-sqlite-worker/index.js",
-  "files": ["src/persistent-sqlite-worker"],
+  "files": [
+    "src/persistent-sqlite-worker",
+    "public",
+    "README.md"
+  ],
   "scripts": {
     "dev": "next dev",
     "install:sql-wasm": "cp node_modules/@aphro/sql.js/dist/sql-wasm.wasm public"
