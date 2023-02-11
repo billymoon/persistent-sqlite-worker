@@ -7,10 +7,9 @@ const Page = ({ data }) => {
   const [query, setQuery] = useState("select * from docs;");
   const [results, setResults] = useState(null);
 
-  console.log(data)
+  console.log(data);
 
-  useEffect(() => {
-  }, [query]);
+  useEffect(() => {}, [query]);
 
   return (
     <section
@@ -28,26 +27,32 @@ const Page = ({ data }) => {
       <button
         onClick={async () =>
           setResults(
-            await sql(query).last({ asArray: true, withColumns: true }),
-          )}
+            await sql(query).last({ asArray: true, withColumns: true })
+          )
+        }
       >
         Execute
       </button>
-      {results &&
-        (
-          <table>
-            <thead style={{ fontWeight: "bold" }}>
-              <tr>
-                {results.columns.map((column, i) => <td key={i}>{column}</td>)}
-              </tr>
-            </thead>
-            <tbody>
-              {results.rows.map((row, i) => (
-                <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>
+      {results && (
+        <table>
+          <thead style={{ fontWeight: "bold" }}>
+            <tr>
+              {results.columns.map((column, i) => (
+                <td key={i}>{column}</td>
               ))}
-            </tbody>
-          </table>
-        )}
+            </tr>
+          </thead>
+          <tbody>
+            {results.rows.map((row, i) => (
+              <tr key={i}>
+                {row.map((cell, j) => (
+                  <td key={j}>{cell}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </section>
   );
 };

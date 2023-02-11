@@ -20,12 +20,14 @@ import { useEffect, useState } from "react";
 function fetchPosts() {
   console.log("fetch posts...");
   return new Promise((resolve) => {
-    sql`select * from docs;`.last({ withColumns: true, asArray: true }).then(results => {    
-      setTimeout(() => {
-        console.log("fetched docs", results);
-        resolve(results);
-      }, 200);
-    })
+    sql`select * from docs;`
+      .last({ withColumns: true, asArray: true })
+      .then((results) => {
+        setTimeout(() => {
+          console.log("fetched docs", results);
+          resolve(results);
+        }, 200);
+      });
   });
 }
 
@@ -33,19 +35,17 @@ const Page = (props) => {
   // const posts = resource.read();
   // const { data } = useSWR(`select * from docs;`, fetcher, { suspense: true});
 
-  console.log({ props })
+  console.log({ props });
   return (
     <div>
       <pre>
-        <code>
-          {JSON.stringify(props)}
-        </code>
+        <code>{JSON.stringify(props)}</code>
       </pre>
     </div>
-  )  
-}
+  );
+};
 
-Page.suspendUntil = () => fetchPosts()
+Page.suspendUntil = () => fetchPosts();
 
 // // const Page = ({ results }) => {
 // const resource = getResource(sql`select * from docs;`.last({ withColumns: true, asArray: true }))

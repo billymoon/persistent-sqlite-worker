@@ -2,8 +2,8 @@ import { SQLiteFS } from "@aphro/absurd-sql";
 import IndexedDBBackend from "@aphro/absurd-sql/dist/indexeddb-backend";
 
 const dbPromise = (async () => {
-  const initSqlJs = await import("@aphro/sql.js").then((importedModule) =>
-    importedModule.default
+  const initSqlJs = await import("@aphro/sql.js").then(
+    (importedModule) => importedModule.default
   );
   const SQL = await initSqlJs({ locateFile: (file) => "/sql-wasm.wasm" });
   const sqlFS = new SQLiteFS(SQL.FS, new IndexedDBBackend());

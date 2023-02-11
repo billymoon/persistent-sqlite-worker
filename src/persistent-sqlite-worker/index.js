@@ -7,7 +7,7 @@ const promisedDatabase = new Promise(async (resolve) => {
     "@aphro/absurd-sql/dist/indexeddb-main-thread"
   );
   const databaseWorker = new Worker(
-    new URL("./service-worker.js", import.meta.url),
+    new URL("./service-worker.js", import.meta.url)
   );
   initBackend(databaseWorker);
   databaseWorker.onmessage = (evt) => {
@@ -30,7 +30,10 @@ const dispatch = (action, query, params, options) =>
 
 const isTag = (arg1, rest) =>
   !!(
-    arg1 && arg1.length > 0 && arg1.raw && arg1.raw.length === arg1.length &&
+    arg1 &&
+    arg1.length > 0 &&
+    arg1.raw &&
+    arg1.raw.length === arg1.length &&
     Object.isFrozen(arg1) &&
     rest.length + 1 === arg1.length
   );
