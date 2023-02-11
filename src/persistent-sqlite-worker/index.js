@@ -12,8 +12,8 @@ const promisedDatabase = new Promise(async (resolve) => {
   initBackend(databaseWorker);
   databaseWorker.onmessage = (evt) => {
     if (evt.data.error) {
-      throw Error(evt.data.error);
       stack.shift();
+      throw Error(evt.data.error);
     } else {
       stack.shift()(evt.data);
     }

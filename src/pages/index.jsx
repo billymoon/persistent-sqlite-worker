@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 
 if (typeof window !== "undefined") window.sql = sql;
 
-const Page = () => {
+const Page = ({ data }) => {
   const [query, setQuery] = useState("select * from docs;");
   const [results, setResults] = useState(null);
+
+  console.log(data)
 
   useEffect(() => {
   }, [query]);

@@ -1,8 +1,9 @@
 {
   "name": "persistent-sqlite-worker",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "src/persistent-sqlite-worker/index.js",
+  "files": ["src/persistent-sqlite-worker"],
   "scripts": {
     "dev": "next dev",
     "install:sql-wasm": "cp node_modules/@aphro/sql.js/dist/sql-wasm.wasm public"
@@ -13,7 +14,8 @@
   "devDependencies": {
     "next": "^13.1.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "swr": "^2.0.1"
   },
   "dependencies": {
     "@aphro/absurd-sql": "^0.0.53",
