@@ -15,7 +15,8 @@ const promisedDatabase = new Promise(async (resolve) => {
       stack.shift();
       throw Error(evt.data.error);
     } else {
-      stack.shift()(evt.data);
+      const callback = stack.shift();
+      typeof callback === 'function' && callback(evt.data);
     }
   };
   resolve(databaseWorker);
